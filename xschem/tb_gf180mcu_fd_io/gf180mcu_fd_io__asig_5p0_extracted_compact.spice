@@ -1,0 +1,17 @@
+.subckt gf180mcu_fd_io__asig_5p0_extracted_compact DVSS DVDD VSS VDD PAD ASIG5V
+* Compact proxy for gf180mcu_fd_io__asig_5p0_extracted.
+* Keeps the same 6-pin interface while replacing the large distributed RLC mesh.
+*
+* Core pad device from official library netlist:
+*   .SUBCKT gf180mcu_fd_io__asig_5p0 ASIG5V DVDD DVSS VDD VSS
+XCORE ASIG5V DVDD DVSS VDD VSS gf180mcu_fd_io__asig_5p0
+
+* PAD-to-ASIG metal connection in extracted view is very low impedance.
+R_PAD_ASIG PAD ASIG5V 1m
+
+* Lumped shunt parasitics (summed from extracted c* entries by root net):
+C_DVDD_VSS DVDD VSS 2.16642p
+C_VDD_VSS  VDD  VSS 133.441f
+C_PAD_VSS  PAD  VSS 88.214f
+C_ASIG_VSS ASIG5V VSS 1.17287p
+.ends
